@@ -3,8 +3,7 @@
 # Created: 25-03-2023
 
 # Path to the datasource without "/" at the end!
-DATASOURCE_PATH="/mnt/c/Users/Lenovo/Documents/POLITECHNIKA-MGR/SEM3/Infrastucture/Lab3/lychee-management/test_photos"
-# DATASOURCE_PATH="/mnt/datasource"
+DATASOURCE_PATH="/mnt/datasource"
 
 # Specify logs format and location
 LOGFILE=~/lychee_management.log
@@ -39,12 +38,12 @@ if [ $session_status == 0 ]; then
     exit 2
 fi
 
-# Get album_id of kpalmi_photos
+# Get album_id of YOUR_ALBUM_NAME
 ALBUM_ID=$(curl -X POST https://photoserver.mde.epf.fr/api/Albums::get \
     -H 'Content-Type: application/json' -H 'Accept: application/json' \
     -H 'Authorization:'$TOKEN \
     -b lychee_cookie.cookie -s \
-    | jq '.albums[] | select(.title=="kpalmi_photos_test") | .id')
+    | jq '.albums[] | select(.title=="YOUR_ALBUM_NAME") | .id')
 
 # Uncomment below to log the album_id
 # echo "LOG: Album id: $ALBUM_ID"
